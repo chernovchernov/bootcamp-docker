@@ -1,0 +1,16 @@
+version: '3'
+services:
+  python_app:
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - app_net
+    depends_on:
+      - redis
+  redis:
+    image: redis:alpine
+    networks:
+      - app_net
+networks:
+  app_net:
